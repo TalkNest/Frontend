@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { auth } from '../../firebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import GoogleSignIn from "./GoogleSignIn";
+import PasswordReset from "./PasswordReset";
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -47,6 +48,7 @@ function Login() {
             </form>
 
             <GoogleSignIn/>
+            <PasswordReset/>
         </div>
     );
 }
