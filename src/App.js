@@ -1,16 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
-import UserComponent from './components/UserComponent';
-import Login from "./components/LogIn/Login";
-import GoogleSignIn from "./components/LogIn/GoogleSignIn";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import LandingPage from "./components/UserComponent";
+import LoginPage from "./components/LogIn/Login";
+import RegisterPage from "./components/Register/Register";
 
 function App() {
 
   return (
-      <div className="App">
-          <Login/>
-          <GoogleSignIn />
-      </div>
+      <Router>
+          <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+          </Routes>
+      </Router>
   );
 }
 

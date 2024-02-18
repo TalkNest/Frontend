@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { auth } from '../../firebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import GoogleSignIn from "./GoogleSignIn";
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -10,9 +11,17 @@ function Login() {
     const login = async (e) => {
         e.preventDefault();
         try {
-            const user = await signInWithEmailAndPassword(auth, email, password);
-            console.log('User logged in:', user);
-            // Redirect or perform some action upon successful login
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            // Access the user from the userCredential
+            const user = userCredential.user;
+
+            if(user.emailVerified) {
+                console.log('User logged in:', user);
+                // Redirect or perform some action upon successful login
+            } else {
+                console.error('Please verify your email address to log in.');
+                // Optionally send another verification email or inform the user
+            }
 
         } catch (error) {
             console.error('Error logging in:', error.message);
@@ -36,6 +45,8 @@ function Login() {
                 />
                 <button type="submit">Log In</button>
             </form>
+
+            <GoogleSignIn/>
         </div>
     );
 }
