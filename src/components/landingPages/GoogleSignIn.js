@@ -53,7 +53,12 @@ function GoogleSignIn() {
     };
 
     return (
-        <button onClick={signInWithGoogle}>Sign in with Google</button>
+      <a href="#" onClick={(e) => {
+        e.preventDefault(); // Prevent the default anchor action
+        signInWithGoogle();
+      }} className="ibtn">
+        <i className="fab fa-google"></i> Sign in with Google
+      </a>
     );
 }
 
