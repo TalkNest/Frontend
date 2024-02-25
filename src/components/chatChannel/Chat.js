@@ -4,6 +4,7 @@ import Add from "../../img/add.png";
 import More from "../../img/more.png";
 import Input from "./Input";
 import {ChatContext} from "../../auth/ChatContext";
+import Messages from "./Messages";
 
 const Chat = () => {
   const { data } = useContext(ChatContext);
@@ -18,7 +19,7 @@ const Chat = () => {
           <img src={More} alt="" />
         </div>
       </div>
-      {/*<Messages />*/}
+      <Messages />
       <Input/>
     </div>
   );
