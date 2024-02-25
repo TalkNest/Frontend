@@ -4,7 +4,7 @@ import {auth} from '../../firebaseConfig';
 import {sendEmailVerification} from 'firebase/auth';
 import {Link} from "react-router-dom";
 import GoogleSignIn from "./GoogleSignIn";
-
+import './css/formbackground.css'
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -65,37 +65,39 @@ const Register = () => {
             </div>
           </div>
           <div className="form-holder">
-            <div className="form-content">
-              <div className="form-items">
-                <h1 className="title">TalkNest</h1>
-                <p>Access to each other</p>
-                <div className="page-links">
-                  <Link to="/login" className="active">Login</Link>
-                  <Link to="/register">Register</Link>
-                </div>
-                <form onSubmit={handleRegister}>
-                  <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}
-                         placeholder="Username" required/>
-                  <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"
-                         required/>
-                  <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}
-                         placeholder="Password" required/>
-                  <select className="form-control" defaultValue="USA" value={location}
-                          onChange={(e) => setLocation(e.target.value)}
-                          required>
-                    <option value="USA">United States of America</option>
-                    <option value="CAN">Canada</option>
-                    <option value="MEX">Mexico</option>
-                    <option value="GBR">United Kingdom</option>
-                    <option value="CHN">China</option>
-                  </select>
-
-                  <div className="form-button">
-                    <button id="submit" type="submit" className="ibtn">Register</button>
+            <div className="form-container">
+              <div className="form-content">
+                <div className="form-items">
+                  <h1 className="title">TalkNest</h1>
+                  <p>Access to each other</p>
+                  <div className="page-links">
+                    <Link to="/login" className="active">Login</Link>
+                    <Link to="/register">Register</Link>
                   </div>
-                </form>
-                <div className="other-links">
-                  <GoogleSignIn/>
+                  <form onSubmit={handleRegister}>
+                    <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}
+                           placeholder="Username" className="form-control" required/>
+                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"
+                           className="form-control" required/>
+                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}
+                           placeholder="Password" className="form-control" required/>
+                    <select className="form-control" defaultValue="USA" value={location}
+                            onChange={(e) => setLocation(e.target.value)}
+                            required>
+                      <option value="USA">United States of America</option>
+                      <option value="CAN">Canada</option>
+                      <option value="MEX">Mexico</option>
+                      <option value="GBR">United Kingdom</option>
+                      <option value="CHN">China</option>
+                    </select>
+
+                    <div style={{textAlign: 'center'}} className="form-button">
+                      <button id="submit" type="submit" className="ibtn">Register</button>
+                    </div>
+                  </form>
+                  <div className="other-links">
+                    <GoogleSignIn/>
+                  </div>
                 </div>
               </div>
             </div>

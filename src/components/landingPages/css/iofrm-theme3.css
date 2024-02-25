@@ -15,11 +15,11 @@
     1 - General Styles
 ------------------------------------*/
 body {
-    background-color: #fff;
+    background-color: #ffffff;
 }
 
 .form-body {
-    background-color: #fff;
+    background-color: #ffffff;
 }
 
 .website-logo {
@@ -100,7 +100,7 @@ body {
 }
 
 .form-holder .form-content ::-webkit-input-placeholder {
-    color: #000 !important;
+    color: #0e0b0b !important;
 }
 
 .form-holder .form-content :-moz-placeholder {
@@ -116,7 +116,7 @@ body {
 }
 
 .form-content {
-    background-color: #fff;
+    background-color: #0089a7;
 }
 
 .form-content .form-group {
