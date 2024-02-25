@@ -28,7 +28,7 @@ function GoogleSignIn() {
                     };
 
                     // Send the user data to your backend API
-                    fetch('http://localhost:8383/api/users', {
+                    fetch(`${process.env.REACT_APP_API_BASE_URL}/api/users`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
