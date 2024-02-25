@@ -8,8 +8,8 @@ import GoogleSignIn from "./GoogleSignIn";
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [username, setUsername] = useState('');
-  const [profilePicture, setProfilePicture] = useState('https://firebasestorage.googleapis.com/v0/b/talknest-22b42.appspot.com/o/User%2FdefaultUserProfile.jpg?alt=media&token=f9398556-8384-46bb-8e43-584116ab06d4');
+  const [displayName, setDisplayName] = useState('');
+  const [photoURL, setPhotoURL] = useState('https://firebasestorage.googleapis.com/v0/b/talknest-22b42.appspot.com/o/User%2FdefaultUserProfile.jpg?alt=media&token=f9398556-8384-46bb-8e43-584116ab06d4');
   const [bio, setBio] = useState('');
   const [location, setLocation] = useState('');
 
@@ -18,14 +18,14 @@ const Register = () => {
     try {
       // Register the user with Firebase Authentication
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const userId = userCredential.user.uid;
+      const uid = userCredential.user.uid;
 
       // Prepare user data to send to your backend
       const userData = {
-        userId,
+        uid,
         email, // Firebase Authentication already validated and registered this email
-        username,
-        profilePicture,
+        displayName,
+        photoURL,
         bio,
         location
       };
@@ -74,7 +74,7 @@ const Register = () => {
                   <Link to="/register">Register</Link>
                 </div>
                 <form onSubmit={handleRegister}>
-                  <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}
+                  <input type="text" value={displayName} onChange={(e) => setDisplayName(e.target.value)}
                          placeholder="Username" required/>
                   <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"
                          required/>

@@ -19,10 +19,10 @@ function GoogleSignIn() {
                 if (isNewUser) {
                     // Prepare the user data to send to the backend
                     const userData = {
-                        userId: user.uid,
+                        uid: user.uid,
                         email: user.email,
-                        username: user.displayName, // Or derive a username as per your app's logic
-                        profilePicture: user.photoURL,
+                        displayName: user.displayName, // Or derive a username as per your app's logic
+                        photoURL: user.photoURL,
                         bio: '', // You might not have this information yet
                         location: '' // You might not have this information yet
                     };
