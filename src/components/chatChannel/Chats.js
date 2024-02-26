@@ -13,7 +13,12 @@ const Chats = () => {
   useEffect(() => {
     const getChats = () => {
       const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
-        setChats(doc.data());
+        const data = doc.data();
+        if (data) { // Ensure data is not undefined or null
+          setChats(data);
+        } else {
+          setChats({}); // Set chats to an empty object if data is undefined or null
+        }
       });
 
       return () => {

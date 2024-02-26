@@ -95,7 +95,6 @@
     justify-content: center;
 
     .container {
-        border: 1px solid white;
         border-radius: 10px;
         width: 80%;
         height: 85%;
@@ -227,7 +226,7 @@
             .messages {
                 background-color: #ddddf7;
                 padding: 10px;
-                height: calc(100% - 160px);
+                height: calc(100% - 100px);
                 overflow: scroll;
 
                 .message {
