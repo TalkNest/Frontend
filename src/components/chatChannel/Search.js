@@ -103,6 +103,12 @@ const Search = () => {
           placeholder="Find a user"
           onChange={(e) => setDisplayName(e.target.value)}
           value={displayName}
+          style={{
+            width: '200px',
+            backgroundColor: 'rgba(125, 185, 222, 0.2)',
+            border: '1px solid rgba(123, 144, 210, 0.7)',
+            borderRadius: '4px'
+          }}
         />
       </div>
 

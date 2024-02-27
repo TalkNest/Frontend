@@ -108,10 +108,12 @@
             flex: 1;
             background-color: #3e3c61;
             position: relative;
+            border-radius: 15px 0px 0px 15px;
 
             .navbar {
                 display: flex;
                 align-items: center;
+                border-radius: 15px 0px 0px 0px;
                 background-color: #2f2d52;
                 height: 50px;
                 padding: 10px;
@@ -161,7 +163,7 @@
                         border: none;
                         color: white;
                         outline: none;
-
+                        margin-top: 10px;
                         &::placeholder {
                             color: lightgray;
                         }
@@ -209,6 +211,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+                border-radius: 0px 15px 0px 0px;
                 padding: 10px;
                 color: lightgray;
             }
@@ -271,7 +274,11 @@
                         .messageContent {
                             align-items: flex-end;
                             p {
-                                background-color: #8da4f1;
+                                /*background-color: #8da4f1;*/
+                                /*background: linear-gradient(120deg,#58B2DC, #0089A7);*/
+                                background: linear-gradient(120deg,#8B81C3, #58B2DC);
+                                /*background: linear-gradient(120deg,#5DAC81, #58B2DC);*/
+                                /*background: linear-gradient(120deg,#EEA9A9, #8A6BBE);*/
                                 color: white;
                                 border-radius: 10px 0px 10px 10px;
                             }
@@ -282,11 +289,12 @@
 
             .input {
                 height: 50px;
-                background-color: white;
+                background-color: #5d5b8d;
                 padding: 10px;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+                border-radius: 0px 0px 15px 0px;
 
                 input {
                     width: 100%;
@@ -296,7 +304,7 @@
                     font-size: 18px;
 
                     &::placeholder {
-                        color: lightgray;
+                        color: rgba(255, 255, 255, 0.5);
                     }
                 }
 
