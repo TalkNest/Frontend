@@ -70,8 +70,8 @@ const Register = () => {
                 <h1 className="title">TalkNest</h1>
                 <p>Access to each other</p>
                 <div className="page-links">
-                  <Link to="/login" className="active">Login</Link>
-                  <Link to="/register">Register</Link>
+                  <Link to="/login">Login</Link>
+                  <Link to="/register" className="active">Register</Link>
                 </div>
                 <form onSubmit={handleRegister}>
                   <input type="text" value={displayName} onChange={(e) => setDisplayName(e.target.value)}
