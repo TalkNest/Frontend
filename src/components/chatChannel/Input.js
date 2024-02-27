@@ -10,9 +10,12 @@ import {
   Timestamp,
   updateDoc,
 } from "firebase/firestore";
-import {db, storage} from "../../firebaseConfig";
+import {auth, db, storage} from "../../firebaseConfig";
 import { v4 as uuid } from "uuid";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import './css/chatbutton.css'
+import ChatButton from "./ChatButton";
+import {SendOutlined} from "@ant-design/icons";
 
 const Input = () => {
   const [text, setText] = useState("");
@@ -80,6 +83,11 @@ const Input = () => {
         placeholder="Type something..."
         onChange={(e) => setText(e.target.value)}
         value={text}
+        style={{
+          backgroundColor: 'rgba(125, 185, 222, 0.2)',
+          border: '1px solid rgba(123, 144, 210, 0.7)',
+          borderRadius: '4px'
+        }}
       />
       <div className="send">
         <img src={Attach} alt="" />
@@ -92,7 +100,17 @@ const Input = () => {
         <label htmlFor="file">
           <img src={Img} alt="" />
         </label>
-        <button onClick={handleSend}>Send</button>
+        <ChatButton name={'Send'}
+                    icon={<SendOutlined />}
+                    onClick={handleSend}
+                    style={{width: '75px',
+                      height: '45px',
+                      borderRadius: '10px',
+                      lineHeight: '10px',
+                      textAlign: 'center',
+                      background: 'linear-gradient(45deg, #7B90D2, #00AA90)',
+                      boxShadow: '0px 3px 9px #7B90D2'
+        }}/>
       </div>
     </div>
   );

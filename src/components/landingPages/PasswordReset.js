@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {sendPasswordResetEmail} from 'firebase/auth';
 import {auth} from '../../firebaseConfig'; // Ensure you import your Firebase auth instance correctly
-
 function PasswordReset() {
   const [email, setEmail] = useState('');
 
