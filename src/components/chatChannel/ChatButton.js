@@ -31,6 +31,7 @@ function ChatButton({name, onClick, className, style, icon}){
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: '16px',
+        padding: '10px 20px',
         fontSize: '15px',
         background: 'linear-gradient(90deg, #00aced, #6f42c1)',
         boxShadow: '0px 3px 9px #1d72d4',
