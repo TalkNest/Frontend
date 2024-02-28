@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useRef} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import {signOut} from "firebase/auth";
 import {AuthContext} from "../../auth/AuthContext";
 import {auth} from '../../firebaseConfig';
@@ -12,18 +12,25 @@ const Navbar = () => {
   return (
       <div className='navbar'>
           <span className="logo">TalkNest</span>
-          <div className="App">
+          <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'nowrap' }}>
+          <div className="user" style={{ display: 'flex', flexWrap: 'nowrap', justifyContent: 'space-between', marginRight: '20px'}}>
+              <img src={currentUser.photoURL} alt=""/>
+              <span style={{
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  maxWidth: '150px'
+              }}>{currentUser.displayName}</span>
+          </div>
+
+          <div className="App" >
               <ChatButton name={'logout'}
                           icon={<LogoutOutlined/>}
                           onClick={() => signOut(auth)}
                           style={{width: '75px', height: '30px', lineHeight: '10px', textAlign: 'center'}}/>
           </div>
-          <div className="user">
-              <img src={currentUser.photoURL} alt=""/>
-              <span>{currentUser.displayName}</span>
-              {/*<button onClick={() => signOut(auth)}>logout</button>*/}
+      </div>
 
-          </div>
       </div>
   )
 }

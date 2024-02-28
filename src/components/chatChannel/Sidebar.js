@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import Search from "./Search";
 import Chats from "./Chats";
 
 const Sidebar = () => {
+
+
   return (
-    <div className="sidebar" style={{borderRadios: '200px 0px 0px 0px'}}>
+    <div className="sidebar">
       <Navbar />
       <Search />
       <Chats />
     </div>
   );
+
 };
 
 export default Sidebar;

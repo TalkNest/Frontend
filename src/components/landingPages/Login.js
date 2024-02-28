@@ -10,12 +10,23 @@ import '../../App.css';
 import {Link} from "react-router-dom";
 import GoogleSignIn from "./GoogleSignIn";
 import {useNavigate} from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 function Login() {
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-
+  const [showAlert, setShowAlert] = useState(true);
+  const handleClose = () => {
+    setShowAlert(false);
+  };
+  const notify = (message) => {
+    toast.error(message, {
+      position: "top-left"
+    });
+  };
   const login = async (e) => {
     e.preventDefault();
     try {
@@ -28,14 +39,18 @@ function Login() {
         // Redirect or perform some action upon successful login
         navigate('/');
       } else {
+        toast.error("Please verify your email address to log in.");
         console.error('Please verify your email address to log in.');
         // Optionally send another verification email or inform the user
       }
 
     } catch (error) {
+      toast.error('Error logging in: ' + error.message);
       console.error('Error logging in:', error.message);
     }
-  };
+
+};
+
 
   return (
     <div>
@@ -57,12 +72,14 @@ function Login() {
                   <Link to="/login" className="active">Login</Link>
                   <Link to="/register">Register</Link>
                 </div>
+                {showAlert && (
                 <div className="alert alert-warning alert-dismissible fade show with-icon" role="alert">
                   Please fill the following form with your information
-                  <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                  <button type="button" className="close" data-dismiss="alert" aria-label="Close" onClick={handleClose}>
+                    <span aria-hidden="true" >&times;</span>
                   </button>
                 </div>
+                )}
                 <form onSubmit={login}>
                   <input
                     type="email"
@@ -93,8 +110,11 @@ function Login() {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
+
   );
+
 }
 
 export default Login;
