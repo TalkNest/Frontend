@@ -1,6 +1,5 @@
 import React, {useRef} from "react";
 import './css/chatbutton.css'
-import {signOut} from "firebase/auth";
 function ChatButton({name, onClick, className, style, icon}){
     const buttonRef = useRef(null)
     const rippleRef = useRef(null)
