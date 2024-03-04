@@ -104,9 +104,7 @@ const Search = () => {
           onChange={(e) => setDisplayName(e.target.value)}
           value={displayName}
           style={{
-            paddingLeft:'10px',
-            height: '30px',
-            width: '95%',
+            width: '100%',
             maxWidth: '600px',
             minWidth: '100px',
             // width: '200px',

@@ -14,29 +14,6 @@
     }
 }
 
-.ant-drawer-content {
-    border-radius: 20px 20px 20px 20px ;
-    overflow: hidden;
-
-}
-.ant-drawer-wrapper-body {
-    border-radius: 20px 20px 20px 20px;
-    overflow: hidden;
-
-}
-.ant-drawer-close {
-     color: white !important;
- }
-.ant-drawer .ant-drawer-header {
-    padding: 0px 10px;
-    border-radius: 20px 0px 0px 0px;
-    border-bottom: none;
-    //overflow: hidden;
-
-}
-.ant-drawer .ant-drawer-body {
-    padding-top: 0px;
-}
 .formContainer {
     background-color: #a7bcff;
     height: 100vh;
@@ -118,56 +95,36 @@
     justify-content: center;
 
     .container {
-        border-radius: 20px 20px 20px 20px;
+        border-radius: 10px;
         width: 80%;
         height: 85%;
-        min-width: 40px;
         display: flex;
+        overflow: hidden;
         @include tablet {
             width: 90%;
         }
-        .chat-button-container {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            display: flex;
-            //justify-content: center;
-            padding: 10px;
-            min-width: 40px;
-            display: none;
-        }
+
         .sidebar {
-            height: 100%;
-            width: 250px;
-            display: flex;
-            flex-direction: column;
             flex: 1;
             background-color: #3e3c61;
             position: relative;
-            border-radius: 20px 0px 0px 20px;
+            border-radius: 15px 0px 0px 15px;
             transition: all 0.3s ease;
 
-
-            .side-components{
-                padding-top: 0px;
-
-            }
             .navbar {
                 display: flex;
                 align-items: center;
+                border-radius: 15px 0px 0px 0px;
                 background-color: #2f2d52;
-                min-width: 40px;
                 height: 50px;
-                //padding-left: 10px;
-                //justify-content: space-between;
+                padding: 10px;
+                justify-content: space-between;
                 color: #ddddf7;
-                border-radius: '20px 0px 0px 0px';
                 .logo {
                     font-weight: bold;
-                    font-size: large;
-                    //@include tablet {
-                    //    display: none;
-                    //}
+                    @include tablet {
+                        display: none;
+                    }
                 }
 
                 .user {
@@ -197,21 +154,16 @@
             }
             .search {
                 border-bottom: 1px solid gray;
-                min-width: '40px';
 
                 .searchForm {
-                    padding-top: 5px;
-                    padding-bottom: 5px;
-                    padding-left: 10px;
-
-
+                    padding: 10px;
 
                     input {
                         background-color: transparent;
                         border: none;
                         color: white;
                         outline: none;
-                        //margin-top: 10px;
+                        margin-top: 10px;
                         &::placeholder {
                             color: rgba(255, 255, 255, 0.5);
                         }
@@ -249,10 +201,7 @@
                     }
                 }
             }
-
         }
-
-
         .chat {
             flex: 2;
 
@@ -377,27 +326,6 @@
                         cursor: pointer;
                     }
                 }
-
-            }
-        }
-        @include mobile{
-            .sidebar{
-                width: 40px;
-            }
-            .side-components{
-                display: none;
-            }
-            .logo{
-                font-size: smaller;
-            }
-            .chat-button-container{
-                position: absolute;
-                bottom: 0;
-                width: 100%;
-                display: flex;
-                //justify-content: center;
-                padding: 10px;
-                min-width: 40px;
             }
         }
     }

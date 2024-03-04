@@ -1,4 +1,6 @@
 import React, { useContext, useState } from "react";
+import Img from "../../img/img.png";
+import Attach from "../../img/attach.png";
 import { AuthContext } from "../../auth/AuthContext";
 import { ChatContext } from "../../auth/ChatContext";
 import {
@@ -84,7 +86,6 @@ const Input = () => {
         style={{
           marginRight: '10px',
           maxWidth: '520px',
-          minWidth: '85px',
           backgroundColor: 'rgba(125, 185, 222, 0.2)',
           border: '1px solid rgba(123, 144, 210, 0.7)',
           borderRadius: '4px'

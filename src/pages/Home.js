@@ -1,7 +1,8 @@
 import React from 'react';
 import Sidebar from "../components/chatChannel/Sidebar";
 import Chat from "../components/chatChannel/Chat";
-import './css/homepage.scss';
+import './css/homepage.css';
+import Search from "../components/chatChannel/Search";
 
 const Home = () => {
   return (
