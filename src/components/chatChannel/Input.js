@@ -86,6 +86,7 @@ const Input = () => {
         style={{
           marginRight: '10px',
           maxWidth: '520px',
+          minWidth: '85px',
           backgroundColor: 'rgba(125, 185, 222, 0.2)',
           border: '1px solid rgba(123, 144, 210, 0.7)',
           borderRadius: '4px'

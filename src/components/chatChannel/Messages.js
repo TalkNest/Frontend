@@ -25,8 +25,10 @@ const Messages = () => {
       {messages.map((m) => (
         <Message message={m} key={m.id} />
       ))}
+
     </div>
   );
 };
+
 
 export default Messages;

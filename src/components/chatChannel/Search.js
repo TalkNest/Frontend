@@ -105,7 +105,7 @@ const Search = () => {
           value={displayName}
           style={{
             width: '100%',
-            maxWidth: '600px',
+            maxWidth: '300px',
             minWidth: '100px',
             // width: '200px',
             backgroundColor: 'rgba(125, 185, 222, 0.2)',
