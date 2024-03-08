@@ -12,6 +12,7 @@ import {AuthContext} from "../../auth/AuthContext";
 const Chat = () => {
   const { data } = useContext(ChatContext);
   const [stream, setStream] = useState();
+  const [userStream, setUserStream] = useState();
   const [call, setCall] = useState({});
   const [callAccepted, setCallAccepted] = useState(false);
   const [callEnded, setCallEnded] = useState(false);
@@ -42,21 +43,24 @@ const Chat = () => {
       setCall({ isReceivingCall: true, from, name: callerName, signal });
     });
 
+    // Listen for the 'hangUp' event from the server to handle when the other user hangs up the call
+    socket.current.on('hangUp', () => {
+      window.location.reload();
+    });
+
   }, []);
 
-  // Assume myVideo and userVideo are refs to your video components
   useEffect(() => {
     if (stream && myVideo.current) {
       myVideo.current.srcObject = stream;
     }
-  }, [stream, myVideo, callAccepted]);
+  }, [stream]);
 
   useEffect(() => {
-    // This effect should run whenever the call is accepted and the remote stream is available.
-    if (callAccepted && !callEnded && userVideo.current && stream) {
-      userVideo.current.srcObject = stream;
+    if (userStream && userVideo.current) {
+      userVideo.current.srcObject = userStream;
     }
-  }, [callAccepted, callEnded]); // Depend on callAccepted, callEnded, and stream
+  }, [userStream]);
 
   const answerCall = () => {
     getVideoStream().then(stream => {
@@ -74,11 +78,8 @@ const Chat = () => {
       });
 
       peer.on('stream', currentStream => {
-        if (userVideo.current) userVideo.current.srcObject = currentStream;
+        setUserStream(currentStream); // Update userStream instead of setting it directly to userVideo
       });
-
-      // Assuming getVideoStream is a function that gets the video stream
-      if (myVideo.current) myVideo.current.srcObject = stream;
 
       peer.signal(call.signal);
       connectionRef.current = peer;
@@ -89,19 +90,22 @@ const Chat = () => {
   const callUser = (id) => {
     getVideoStream().then(stream => {
       setStream(stream);
+
       const peer = new Peer({
         initiator: true,
         trickle: false,
         stream,
       });
+
       peer.on('signal', data => {
         socket.current.emit('callUser', { userToCall: id, signalData: data, from: currentUser.uid });
       });
+
       // Do not set userVideo.srcObject here for the caller
       peer.on('stream', currentStream => {
-        // This will now correctly set the receiver's stream for the caller when received
-        userVideo.current.srcObject = currentStream;
+        setUserStream(currentStream); // Set the remote stream received from the peer
       });
+
       connectionRef.current = peer;
     }).catch(err => console.log('Error getting user media:', err));
   };
@@ -110,6 +114,13 @@ const Chat = () => {
   const leaveCall = () => {
     setCallEnded(true);
     connectionRef.current.destroy();
+
+    // Check if there's an ongoing call and if we have the ID of the other participant
+    if (call.from) {
+      // Emit 'hangUp' event to the server, signaling that the call has ended
+      socket.current.emit('hangUp', { to: call.from });
+    }
+
     window.location.reload();
   };
 
