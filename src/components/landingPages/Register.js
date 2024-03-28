@@ -9,7 +9,7 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [displayName, setDisplayName] = useState('');
-  const [photoURL, setPhotoURL] = useState('https://firebasestorage.googleapis.com/v0/b/talknest-22b42.appspot.com/o/User%2FdefaultUserProfile.jpg?alt=media&token=f9398556-8384-46bb-8e43-584116ab06d4');
+  const [photoURL, setPhotoURL] = useState('https://iyvhmpdfrnznxgyvvkvx.supabase.co/storage/v1/object/public/Page/person.797x1024.png');
   const [bio, setBio] = useState('');
   const [location, setLocation] = useState('');
 
